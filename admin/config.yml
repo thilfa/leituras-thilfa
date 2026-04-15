@@ -1,7 +1,6 @@
 backend:
-  name: github
-  repo: thilfa/leituras-thilfa # Substitua pelo seu usuário/repositório
-  branch: main
+  name: git-gateway
+  branch: main # Confirme se sua branch principal é main
 
 media_folder: "capas" # Onde as imagens serão salvas
 public_folder: "capas"
