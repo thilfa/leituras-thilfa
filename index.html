@@ -1,0 +1,89 @@
+import React, { useState } from 'react';
+
+export default function Home() {
+  const [busca, setBusca] = useState('');
+  const [filtroGenero, setFiltroGenero] = useState('Todos');
+
+  // Filtros de busca
+  const livrosFiltrados = livros.filter(livro => {
+    const matchBusca = livro.titulo.toLowerCase().includes(busca.toLowerCase()) || 
+                       livro.autor.toLowerCase().includes(busca.toLowerCase());
+    const matchGenero = filtroGenero === 'Todos' || livro.genero === filtroGenero;
+    return matchBusca && matchGenero;
+  });
+
+  return (
+    <div className="bg-gray-50 min-h-screen font-sans">
+      {/* 1. HERO */}
+      <section className="bg-white py-20 px-6 text-center border-b">
+        <h1 className="text-5xl font-bold text-gray-900 mb-4">Leituras do Thilfa</h1>
+        <p className="text-xl text-gray-600 mb-6">Indicações de livros pra quem quer ler melhor — não só mais.</p>
+        <div className="flex justify-center gap-4 text-sm font-medium text-blue-600">
+          <span>📌 Ficção</span> <span>📌 Fantasia</span> <span>📌 Thriller</span> <span>📌 Não-ficção</span>
+        </div>
+      </section>
+
+      {/* 2. BARRA DE PESQUISA E FILTROS */}
+      <section className="max-w-6xl mx-auto py-8 px-6">
+        <div className="flex flex-col md:flex-row gap-4 mb-10">
+          <input 
+            type="text" 
+            placeholder="Pesquisar por título ou autor..." 
+            className="flex-1 p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+            onChange={(e) => setBusca(e.target.value)}
+          />
+          <select 
+            className="p-3 rounded-lg border border-gray-300 bg-white"
+            onChange={(e) => setFiltroGenero(e.target.value)}
+          >
+            <option value="Todos">Todos os Gêneros</option>
+            <option value="Fantasia">Fantasia</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Não-ficção">Não-ficção</option>
+          </select>
+        </div>
+
+        {/* 3. GRID DE CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {livrosFiltrados.map(livro => (
+            <div key={livro.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border overflow-hidden">
+              <img src={livro.capa} alt={livro.titulo} className="w-full h-64 object-cover" />
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-1">{livro.titulo}</h3>
+                <p className="text-gray-500 mb-4">{livro.autor}</p>
+                
+                <div className="mb-4">
+                  <p className="text-sm font-semibold text-gray-700">💬 Por que ler:</p>
+                  <p className="text-gray-600 text-sm italic leading-relaxed">{livro.porqueLer}</p>
+                </div>
+
+                <div className="mb-4 text-sm">
+                  <span className="font-semibold text-gray-700">🎯 Para quem: </span>
+                  <span className="text-gray-600">{livro.paraQuem}</span>
+                </div>
+
+                {livro.destaque && (
+                  <div className="bg-yellow-50 p-2 rounded border border-yellow-100 mb-6 text-xs text-yellow-800">
+                    ⚡ {livro.destaque}
+                  </div>
+                )}
+
+                <a href={livro.link} target="_blank" className="block text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg transition-colors">
+                  Ver na Amazon
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. AVISO DE AFILIADO */}
+      <footer className="bg-gray-100 py-10 mt-20 text-center text-gray-500 text-sm px-6">
+        <p className="max-w-2xl mx-auto mb-4">
+          Alguns links desta página são de afiliado. Isso significa que posso receber uma pequena comissão caso você compre por eles — sem custo adicional para você.
+        </p>
+        <p className="font-bold text-gray-700">Leituras do Thilfa © | Feito por quem realmente lê 📚</p>
+      </footer>
+    </div>
+  );
+}
