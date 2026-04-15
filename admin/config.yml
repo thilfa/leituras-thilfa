@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: thilfa/leituras-thilfa # Substitua pelo seu usuário/repositório
+  branch: main
+
+media_folder: "capas" # Onde as imagens serão salvas
+public_folder: "capas"
+
+collections:
+  - name: "livros"
+    label: "Livros"
+    folder: "_livros" # Ele vai criar arquivos individuais para cada livro
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Autor", name: "autor", widget: "string" }
+      - { label: "Gênero", name: "genero", widget: "select", options: ["Fantasia", "Ficção Científica", "Thriller", "Não-ficção"] }
+      - { label: "Capa", name: "capa", widget: "image" }
+      - { label: "Por que ler", name: "porqueLer", widget: "text" }
+      - { label: "Para quem é", name: "paraQuem", widget: "string" }
+      - { label: "Destaque", name: "destaque", widget: "string" }
+      - { label: "Link Amazon", name: "link", widget: "string" }
