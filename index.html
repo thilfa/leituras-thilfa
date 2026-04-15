@@ -1,89 +1,138 @@
-import React, { useState } from 'react';
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leituras do Thilfa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
 
-export default function Home() {
-  const [busca, setBusca] = useState('');
-  const [filtroGenero, setFiltroGenero] = useState('Todos');
-
-  // Filtros de busca
-  const livrosFiltrados = livros.filter(livro => {
-    const matchBusca = livro.titulo.toLowerCase().includes(busca.toLowerCase()) || 
-                       livro.autor.toLowerCase().includes(busca.toLowerCase());
-    const matchGenero = filtroGenero === 'Todos' || livro.genero === filtroGenero;
-    return matchBusca && matchGenero;
-  });
-
-  return (
-    <div className="bg-gray-50 min-h-screen font-sans">
-      {/* 1. HERO */}
-      <section className="bg-white py-20 px-6 text-center border-b">
-        <h1 className="text-5xl font-bold text-gray-900 mb-4">Leituras do Thilfa</h1>
-        <p className="text-xl text-gray-600 mb-6">Indicações de livros pra quem quer ler melhor — não só mais.</p>
-        <div className="flex justify-center gap-4 text-sm font-medium text-blue-600">
-          <span>📌 Ficção</span> <span>📌 Fantasia</span> <span>📌 Thriller</span> <span>📌 Não-ficção</span>
+    <header class="bg-white py-20 px-6 text-center border-b">
+        <h1 class="text-5xl font-serif font-bold mb-4">Leituras do Thilfa</h1>
+        <p class="text-xl text-gray-600 mb-6 font-light">Indicações de livros pra quem quer ler melhor — não só mais.</p>
+        <div class="flex justify-center flex-wrap gap-4 text-sm font-medium text-blue-600">
+            <span>📌 Ficção</span> <span>📌 Fantasia</span> <span>📌 Thriller</span> <span>📌 Não-ficção</span>
         </div>
-      </section>
+    </header>
 
-      {/* 2. BARRA DE PESQUISA E FILTROS */}
-      <section className="max-w-6xl mx-auto py-8 px-6">
-        <div className="flex flex-col md:flex-row gap-4 mb-10">
-          <input 
-            type="text" 
-            placeholder="Pesquisar por título ou autor..." 
-            className="flex-1 p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
-            onChange={(e) => setBusca(e.target.value)}
-          />
-          <select 
-            className="p-3 rounded-lg border border-gray-300 bg-white"
-            onChange={(e) => setFiltroGenero(e.target.value)}
-          >
-            <option value="Todos">Todos os Gêneros</option>
-            <option value="Fantasia">Fantasia</option>
-            <option value="Thriller">Thriller</option>
-            <option value="Não-ficção">Não-ficção</option>
-          </select>
-        </div>
-
-        {/* 3. GRID DE CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {livrosFiltrados.map(livro => (
-            <div key={livro.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border overflow-hidden">
-              <img src={livro.capa} alt={livro.titulo} className="w-full h-64 object-cover" />
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-1">{livro.titulo}</h3>
-                <p className="text-gray-500 mb-4">{livro.autor}</p>
-                
-                <div className="mb-4">
-                  <p className="text-sm font-semibold text-gray-700">💬 Por que ler:</p>
-                  <p className="text-gray-600 text-sm italic leading-relaxed">{livro.porqueLer}</p>
-                </div>
-
-                <div className="mb-4 text-sm">
-                  <span className="font-semibold text-gray-700">🎯 Para quem: </span>
-                  <span className="text-gray-600">{livro.paraQuem}</span>
-                </div>
-
-                {livro.destaque && (
-                  <div className="bg-yellow-50 p-2 rounded border border-yellow-100 mb-6 text-xs text-yellow-800">
-                    ⚡ {livro.destaque}
-                  </div>
-                )}
-
-                <a href={livro.link} target="_blank" className="block text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg transition-colors">
-                  Ver na Amazon
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. AVISO DE AFILIADO */}
-      <footer className="bg-gray-100 py-10 mt-20 text-center text-gray-500 text-sm px-6">
-        <p className="max-w-2xl mx-auto mb-4">
-          Alguns links desta página são de afiliado. Isso significa que posso receber uma pequena comissão caso você compre por eles — sem custo adicional para você.
+    <section class="max-w-2xl mx-auto py-12 px-6 text-center border-b border-gray-100">
+        <h2 class="text-2xl font-bold mb-4">Sobre o Thilfa</h2>
+        <p class="text-gray-600 leading-relaxed italic">
+            "Eu leio no meu ritmo e compartilho sem pressa. Aqui você não vai encontrar listas genéricas. 
+            Só livros que realmente me marcaram — e por quê."
         </p>
-        <p className="font-bold text-gray-700">Leituras do Thilfa © | Feito por quem realmente lê 📚</p>
-      </footer>
-    </div>
-  );
-}
+    </section>
+
+    <section class="max-w-6xl mx-auto py-12 px-6">
+        <div class="flex flex-col md:flex-row gap-4 mb-12">
+            <input type="text" id="inputBusca" placeholder="Pesquisar por título ou autor..." 
+                class="flex-1 p-4 rounded-xl border border-gray-200 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+            
+            <select id="selectGenero" class="p-4 rounded-xl border border-gray-200 bg-white shadow-sm outline-none cursor-pointer">
+                <option value="Todos">Todos os Gêneros</option>
+                <option value="Fantasia">Fantasia</option>
+                <option value="Ficção Científica">Ficção Científica</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Não-ficção">Não-ficção</option>
+            </select>
+        </div>
+
+        <div id="gridLivros" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            </div>
+    </section>
+
+    <footer class="bg-gray-100 py-16 mt-20 text-center text-gray-500 text-sm px-6">
+        <p class="max-w-xl mx-auto mb-6 leading-relaxed">
+            Alguns links desta página são de afiliado. Isso significa que posso receber uma pequena comissão caso você compre por eles — sem custo adicional para você.
+        </p>
+        <hr class="border-gray-300 mb-8 w-1/4 mx-auto">
+        <p class="font-bold text-gray-800 text-base">Leituras do Thilfa © | Feito por quem realmente lê 📚</p>
+    </footer>
+
+    <script>
+        // SEUS DADOS DE LIVROS - Você pode adicionar novos aqui seguindo o padrão
+        const livros = [
+            {
+                id: 1,
+                titulo: "A Guerra da Papoula",
+                autor: "R. F. Kuang",
+                genero: "Fantasia",
+                capa: "https://m.media-amazon.com/images/I/91N9mQvUunL.jpg",
+                porqueLer: "Começa como fantasia 'clássica' e vira algo muito mais pesado e político. É daqueles que te desmontam.",
+                paraQuem: "Pra quem gosta de fantasia com profundidade e não tem medo de temas duros.",
+                destaque: "Não é uma fantasia confortável — e é isso que faz ele ser incrível.",
+                link: "https://amzn.to/3T6o1Xv" // Substitua pelo seu link de afiliado
+            },
+            {
+                id: 2,
+                titulo: "O Problema dos Três Corpos",
+                autor: "Cixin Liu",
+                genero: "Ficção Científica",
+                capa: "https://m.media-amazon.com/images/I/81S2pWb0tLL.jpg",
+                porqueLer: "Uma visão monumental sobre o primeiro contato. Hard Sci-fi que explode a cabeça com conceitos físicos.",
+                paraQuem: "Leitores que buscam ciência real misturada com uma trama épica.",
+                destaque: "Vencedor do Hugo e um marco da ficção moderna.",
+                link: "#"
+            }
+        ];
+
+        const grid = document.getElementById('gridLivros');
+        const inputBusca = document.getElementById('inputBusca');
+        const selectGenero = document.getElementById('selectGenero');
+
+        function renderizarLivros() {
+            const busca = inputBusca.value.toLowerCase();
+            const genero = selectGenero.value;
+
+            const filtrados = livros.filter(l => {
+                const matchTexto = l.titulo.toLowerCase().includes(busca) || l.autor.toLowerCase().includes(busca);
+                const matchGenero = genero === "Todos" || l.genero === genero;
+                return matchTexto && matchGenero;
+            });
+
+            grid.innerHTML = filtrados.map(l => `
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full">
+                    <div class="h-80 overflow-hidden border-b border-gray-50">
+                        <img src="${l.capa}" alt="${l.titulo}" class="w-full h-full object-contain p-4 bg-gray-50">
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3 class="text-2xl font-bold font-serif mb-1 leading-tight text-gray-900">${l.titulo}</h3>
+                        <p class="text-gray-500 mb-6 text-sm">${l.autor} • <span class="text-blue-600 font-semibold">${l.genero}</span></p>
+                        
+                        <div class="mb-6 flex-1">
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.1em] mb-2">💬 Por que ler</p>
+                            <p class="text-gray-700 text-sm leading-relaxed italic">"${l.porqueLer}"</p>
+                        </div>
+
+                        <div class="mb-6">
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.1em] mb-2">🎯 Para quem é</p>
+                            <p class="text-gray-700 text-sm font-medium">${l.paraQuem}</p>
+                        </div>
+
+                        <div class="mt-auto">
+                            <div class="bg-yellow-50 p-3 rounded-xl border border-yellow-200 mb-6 text-xs text-yellow-900 font-semibold flex items-center gap-2">
+                                <span>⚡</span> ${l.destaque}
+                            </div>
+                            <a href="${l.link}" target="_blank" class="block text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-orange-200 active:scale-95">
+                                Ver na Amazon
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        inputBusca.addEventListener('input', renderizarLivros);
+        selectGenero.addEventListener('change', renderizarLivros);
+        
+        // Inicializa a página
+        renderizarLivros();
+    </script>
+</body>
+</html>
