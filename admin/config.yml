@@ -2,19 +2,17 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "assets/images/livros" # Onde as capas serão salvas
+media_folder: "assets/images/livros"
 public_folder: "/assets/images/livros"
 
 collections:
   - name: "livros"
     label: "Livros"
-    folder: "_livros" # Pasta onde os arquivos dos livros serão criados
+    folder: "_livros"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Autor", name: "author", widget: "string" }
-      - { label: "Data da Leitura", name: "date", widget: "datetime" }
-      - { label: "Capa do Livro", name: "image", widget: "image" }
-      - { label: "Resenha/Comentário", name: "body", widget: "markdown" }
-      - { label: "Categoria", name: "category", widget: "select", options: ["Ficção", "Não-Ficção", "Técnico", "IA", "Outros"] }
+      - { label: "Capa", name: "image", widget: "image" }
+      - { label: "Resenha", name: "body", widget: "markdown" }
