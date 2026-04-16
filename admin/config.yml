@@ -1,22 +1,20 @@
 backend:
   name: git-gateway
-  branch: main # Confirme se sua branch principal é main
+  branch: main
 
-media_folder: "capas" # Onde as imagens serão salvas
-public_folder: "capas"
+media_folder: "assets/images/livros" # Onde as capas serão salvas
+public_folder: "/assets/images/livros"
 
 collections:
   - name: "livros"
     label: "Livros"
-    folder: "_livros" # Ele vai criar arquivos individuais para cada livro
+    folder: "_livros" # Pasta onde os arquivos dos livros serão criados
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Título", name: "title", widget: "string" }
-      - { label: "Autor", name: "autor", widget: "string" }
-      - { label: "Gênero", name: "genero", widget: "select", options: ["Fantasia", "Ficção Científica", "Thriller", "Não-ficção"] }
-      - { label: "Capa", name: "capa", widget: "image" }
-      - { label: "Por que ler", name: "porqueLer", widget: "text" }
-      - { label: "Para quem é", name: "paraQuem", widget: "string" }
-      - { label: "Destaque", name: "destaque", widget: "string" }
-      - { label: "Link Amazon", name: "link", widget: "string" }
+      - { label: "Autor", name: "author", widget: "string" }
+      - { label: "Data da Leitura", name: "date", widget: "datetime" }
+      - { label: "Capa do Livro", name: "image", widget: "image" }
+      - { label: "Resenha/Comentário", name: "body", widget: "markdown" }
+      - { label: "Categoria", name: "category", widget: "select", options: ["Ficção", "Não-Ficção", "Técnico", "IA", "Outros"] }
