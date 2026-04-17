@@ -10,9 +10,6 @@ collections:
     label: "Livros"
     folder: "_livros"
     create: true
-    slug: "{{slug}}"
     fields:
       - { label: "Título", name: "title", widget: "string" }
-      - { label: "Autor", name: "author", widget: "string" }
-      - { label: "Capa", name: "image", widget: "image" }
-      - { label: "Resenha", name: "body", widget: "markdown" }
+      - { label: "Corpo", name: "body", widget: "markdown" }
