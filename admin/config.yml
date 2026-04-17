@@ -2,14 +2,18 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "assets/images/livros"
-public_folder: "/assets/images/livros"
+media_folder: "capas"
+public_folder: "capas"
 
 collections:
-  - name: "livros"
-    label: "Livros"
-    folder: "_livros"
+  - name: "resenhas"
+    label: "Minhas Resenhas"
+    folder: "_posts"
     create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Título", name: "title", widget: "string" }
-      - { label: "Corpo", name: "body", widget: "markdown" }
+      - { label: "Título do Livro", name: "title", widget: "string" }
+      - { label: "Autor", name: "author", widget: "string" }
+      - { label: "Data da Leitura", name: "date", widget: "datetime" }
+      - { label: "Capa do Livro", name: "image", widget: "image" }
+      - { label: "Resenha", name: "body", widget: "markdown" }
