@@ -1,43 +1,51 @@
-fields:
-  titulo:
-    label: Título
-    type: text
-    required: true
-  autor:
-    label: Autor
-    type: text
-    required: true
-  genero:
-    label: Gênero
-    type: text
-    required: true
-  capa:
-    label: Capa
-    type: text
-    required: true
-  porqueLer:
-    label: Por Que Ler?
-    type: text
-    required: true
-  paraQuem:
-    label: Para Quem?
-    type: text
-    required: true
-  destaque:
-    label: Destaque
-    type: boolean
-    required: false
-  link:
-    label: Link
-    type: text
-    required: true
+backend:
+  name: git-gateway
+  branch: main
 
-collection:
-  name: Books
-  label: Books
-  folder: "books"
-  create: true
-  slug:
-    encoding: slug
-    clean: true
-  format: json
+media_folder: "static/uploads"
+media_library:
+  name: github
+  branch: main
+
+collections:
+  - name: Books
+    label: Books
+    folder: "books"
+    create: true
+    slug:
+      encoding: slug
+      clean: true
+    format: json
+    fields:
+      - label: Título
+        name: titulo
+        widget: string
+        required: true
+      - label: Autor
+        name: autor
+        widget: string
+        required: true
+      - label: Gênero
+        name: genero
+        widget: string
+        required: true
+      - label: Capa
+        name: capa
+        widget: image
+        required: true
+      - label: Por Que Ler?
+        name: porqueLer
+        widget: text
+        required: true
+      - label: Para Quem?
+        name: paraQuem
+        widget: text
+        required: true
+      - label: Destaque
+        name: destaque
+        widget: boolean
+        required: false
+      - label: Link
+        name: link
+        widget: string
+        required: true
