@@ -1,19 +1,43 @@
-backend:
-  name: git-gateway
-  branch: main
+fields:
+  titulo:
+    label: Título
+    type: text
+    required: true
+  autor:
+    label: Autor
+    type: text
+    required: true
+  genero:
+    label: Gênero
+    type: text
+    required: true
+  capa:
+    label: Capa
+    type: text
+    required: true
+  porqueLer:
+    label: Por Que Ler?
+    type: text
+    required: true
+  paraQuem:
+    label: Para Quem?
+    type: text
+    required: true
+  destaque:
+    label: Destaque
+    type: boolean
+    required: false
+  link:
+    label: Link
+    type: text
+    required: true
 
-media_folder: "capas"
-public_folder: "capas"
-
-collections:
-  - name: "resenhas"
-    label: "Minhas Resenhas"
-    folder: "_posts"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Título do Livro", name: "title", widget: "string" }
-      - { label: "Autor", name: "author", widget: "string" }
-      - { label: "Data da Leitura", name: "date", widget: "datetime" }
-      - { label: "Capa do Livro", name: "image", widget: "image" }
-      - { label: "Resenha", name: "body", widget: "markdown" }
+collection:
+  name: Books
+  label: Books
+  folder: "books"
+  create: true
+  slug:
+    encoding: slug
+    clean: true
+  format: json
