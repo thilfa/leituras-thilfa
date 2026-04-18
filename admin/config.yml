@@ -12,9 +12,7 @@ collections:
     label: Books
     folder: "books"
     create: true
-    slug:
-      encoding: slug
-      clean: true
+    slug: "{{slug}}"
     format: json
     fields:
       - label: Título
